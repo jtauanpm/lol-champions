@@ -1,9 +1,8 @@
 import { useState, useMemo } from "react";
+import { useRouter } from 'next/router'
 
-
-const showDetails = (item) => {
-  console.log(item)
-  
+const showDetails = (item, router) => {
+  router.push(`/champions/${item.id}`)
 }
 
 const useSortableData = (items, config = null) => {
@@ -48,6 +47,8 @@ const useSortableData = (items, config = null) => {
       }
       return sortConfig.key === name ? sortConfig.direction : undefined;
     };
+
+    const router = useRouter()
     return (
       <table>
         <thead>
@@ -83,7 +84,7 @@ const useSortableData = (items, config = null) => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <tr key={item.id} onClick={() => showDetails(item)}>
+            <tr key={item.id} onClick={() => showDetails(item, router)}>
               <td>{item.name}</td>
               <td>{item.partype}</td>
               <td>{item.title}</td>
@@ -95,7 +96,6 @@ const useSortableData = (items, config = null) => {
   };
   
   export default function Table(champions) {
-
     return (
       <div className="Table">
         <ItemTable

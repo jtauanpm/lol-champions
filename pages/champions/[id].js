@@ -36,11 +36,25 @@ export async function getStaticPaths(context){
 
 
 export default function Champion({champ}){
+    console.log(champ)
+
+    const champImageSrc = `http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/${champ.image.full}`
+
+    console.log(champImageSrc)
+
     return (
         <div>
             <h1>
                 {champ.id}
             </h1>
+
+            <img src={champImageSrc} alt="champion image"/>
+            <b>Styles: </b>
+            {champ.tags.map((tag) => (<p>{tag}</p>))}
+
+            <p>{champ.lore}</p>
+            
+
             <Link href="/">
                 <button>
                     Back
