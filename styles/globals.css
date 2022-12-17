@@ -58,6 +58,7 @@ body {
 #filter {
   text-align: center;
   background-color: #fff;
+  color: black;
   columns: black;
   border-radius: 8px
 }

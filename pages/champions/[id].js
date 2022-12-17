@@ -40,7 +40,7 @@ export async function getStaticPaths(context) {
 }
 
 const imgLoader = ({src}) => {
-  return `http://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/${src}`
+  return `https://ddragon.leagueoflegends.com/cdn/12.23.1/img/champion/${src}`
 };
 
 export default function Champion({ champ }) {
