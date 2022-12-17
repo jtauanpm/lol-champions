@@ -25,6 +25,9 @@ export default function Home({data}) {
       <h1>
         League of Legends Champions
       </h1>
+      <p>Jonathan Tauan &
+        Rusdrael Antony
+      </p>
 
       <Table champions={champions}/>
       
