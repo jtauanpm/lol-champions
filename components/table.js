@@ -105,15 +105,15 @@ export default function Table(items) {
   const [champs, setChamps] = useState(initialValues);
 
   const handleChange = (event) => {
-    setFilter(event.target.value);
+    setFilter(event.target.value.toLowerCase());
   };
 
-  const clearFilters = () => {
-    setChamps(items)
+  const clearFilter = () => {
+    setFilter('')
+    setChamps(initialValues)
   }
 
   const filterItems = () => {
-    clearFilters()
     const filteredItems = initialValues.map((champ) => {
       const champName = champ.name.toLowerCase()
       const shouldBeShow = champName.includes(filter);
@@ -124,14 +124,23 @@ export default function Table(items) {
   };
 
   return (
-    <div className="Table">
-      <input
-        type="input"
-        placeholder="Filter By Name"
-        onChange={handleChange}
-      />
-      <input type="submit" onClick={() => filterItems()} />
-      <ItemTable champions={[...champs]} />
-    </div>
+    <>
+      <div className="Filter">
+        <input className="center"
+          id="filter"
+          name="filter"
+          type="input"
+          placeholder="Filter By Name"
+          onChange={handleChange}
+          value={filter}
+        />
+        <button onClick={() => filterItems()}>Submit</button>
+        <button onClick={() => clearFilter()} >Clear Filter</button>
+      </div>
+
+      <div className="Table">
+        <ItemTable champions={[...champs]} />
+      </div>
+    </>
   );
 }

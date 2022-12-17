@@ -55,6 +55,24 @@ body {
   font-size: 16px;
 }
 
+#filter {
+  text-align: center;
+  background-color: #fff;
+  columns: black;
+  border-radius: 8px
+}
+
+.Filter {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.names {
+  text-align: center;
+}
+
 table {
   display: flex;
   flex-direction: column;
