@@ -47,7 +47,7 @@ export default function Champion({champ}){
             <ul>
                 <h2>{champ.id}</h2>
                 <img src={champImageSrc} alt="champion image"/>
-                <li><b>Styles:</b>{champ.tags.map((tag) => (<p>{tag}</p>))}</li>
+                <li><b>Styles:</b>{champ.tags.map((tag) => (<p key={champ.tag}>{tag}</p>))}</li>
                 <li><b>Description:</b><p>{champ.lore}</p></li>
             </ul>
             <Link href="/"><button>Back</button></Link>
