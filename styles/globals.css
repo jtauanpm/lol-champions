@@ -26,7 +26,7 @@ button {
   font-family: inherit;
   color: rgb(255, 255, 255);
   font-size: 15px;
-  background-color: rgb(106, 106, 106);
+  background-color: #0c6cfc;
   border-collapse: collapse;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 8px;
@@ -37,7 +37,7 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: rgb(145, 145, 145);
+  background-color: #0c5cd4;
 }
 
 @media (prefers-color-scheme: dark) {
