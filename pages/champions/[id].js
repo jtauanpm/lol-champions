@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Head from 'next/head'
 
 export async function getStaticProps(context) {
   const { params } = context;
@@ -49,6 +50,9 @@ export default function Champion({ champ }) {
 
   return (
     <div className="info">
+    <Head>
+        <title>{champ.name}</title>
+    </Head>
       <ul>
         <h2>{champ.id}</h2>
         <Image
@@ -70,7 +74,8 @@ export default function Champion({ champ }) {
         </li>
       </ul>
       <Link href="/">
-        <button>Back</button>
+        <button className="btn btn-danger"
+          type="button" >Back</button>
       </Link>
     </div>
   );
