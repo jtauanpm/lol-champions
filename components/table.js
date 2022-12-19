@@ -83,7 +83,7 @@ const ItemTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {items.map((item) => {
+        {items.length > 0 ? items.map((item) => {
           if (item != undefined){
             return (
               <tr key={item.id} onClick={() => showDetails(item, router)}>
@@ -93,7 +93,8 @@ const ItemTable = (props) => {
               </tr>
             )
           }
-        })}
+        }) : <h1>No champions found with that name</h1> 
+        }
       </tbody>
     </table>
   );
@@ -104,23 +105,16 @@ export default function Table(items) {
   const [filter, setFilter] = useState("");
   const [champs, setChamps] = useState(initialValues);
 
-  const handleChange = (event) => {
-    setFilter(event.target.value.toLowerCase());
-  };
-
   const clearFilter = () => {
     setFilter('')
     setChamps(initialValues)
   }
 
-  const filterItems = () => {
-    const filteredItems = initialValues.map((champ) => {
-      const champName = champ.name.toLowerCase()
-      const shouldBeShow = champName.includes(filter);
-      if (shouldBeShow)
-        return champ;
-    });
-    setChamps(filteredItems);
+  //TODO: error message when champs.legnth =0 
+  const handlefilter = e => {
+    const inputValue = e.target.value.toLowerCase()
+    setFilter(inputValue)
+    setChamps(initialValues.filter(champ => champ.name.toLowerCase().includes(inputValue)));
   };
 
   return (
@@ -131,10 +125,9 @@ export default function Table(items) {
           name="filter"
           type="input"
           placeholder="Filter By Name"
-          onChange={handleChange}
+          onChange={handlefilter}
           value={filter}
         />
-        <button onClick={() => filterItems()}>Submit</button>
         <button onClick={() => clearFilter()} >Clear Filter</button>
       </div>
 
